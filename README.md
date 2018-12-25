@@ -1,5 +1,7 @@
 base是一个小而美的业务基础框架，它使用graphql作为api通信协议基础。然后提供了一些可以直接使用的后端存储服务。
 
+![tiny-base](https://gewuwei.oss-cn-shanghai.aliyuncs.com/tracelearning/base.png)
+
 ## 基础特性
 
 1. 只支持graphql协议通信；提供了graphql-ui；UI即接口。并提供了一些与该协议进行数据转化的API列表;
