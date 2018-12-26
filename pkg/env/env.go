@@ -9,10 +9,10 @@ import (
 
 // ENV_NAME表示服务所在server相关环境变量
 /*
-FREEGO_ZK = "127.0.0.1:2181" // 配置中心地址
-FREEGO_NAME = "xxx"       // 服务名称
-FREEGO_ENV = "ns-xxx-dev" // 开发环境
-FREEGO_LOG = "/var/log/xxx // 日志目录
+APP_ZK = "127.0.0.1:2181" // 配置中心地址
+APP_NAME = "xxx"       // 服务名称
+APP_ENV = "ns-xxx-dev" // 开发环境
+APP_LOG = "/var/log/xxx // 日志目录
 */
 type ENV_NAME string
 

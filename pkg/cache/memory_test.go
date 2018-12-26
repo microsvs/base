@@ -28,29 +28,29 @@ func init() {
 
 func TestSetAndGet(t *testing.T) {
 	var err error
-	if err = memConn.Set("/tmp/b2b/test01", "tmp"); err != nil {
+	if err = memConn.Set("/tmp/demo/test01", "tmp"); err != nil {
 		t.Error(err.Error())
 	}
-	if err = memConn.Set("/tmp/b2b/test02", "tmp"); err != nil {
+	if err = memConn.Set("/tmp/demo/test02", "tmp"); err != nil {
 		t.Error(err.Error())
 	}
 	var value interface{}
 	var tmp string
-	if value, err = memConn.Get("/tmp/b2b/test01"); err != nil {
+	if value, err = memConn.Get("/tmp/demo/test01"); err != nil {
 		t.Error(err.Error())
 	}
 	if err = utils.GenericTypeConvert(value, &tmp); err != nil {
 		t.Error(err.Error())
 	}
-	assert.Equal(t, "tmp", tmp, "`/tmp/b2b/test01` != tmp")
+	assert.Equal(t, "tmp", tmp, "`/tmp/demo/test01` != tmp")
 }
 
 func TestDel(t *testing.T) {
 	var err error
-	if err = memConn.Del("/tmp/b2b/test01"); err != nil {
+	if err = memConn.Del("/tmp/demo/test01"); err != nil {
 		t.Error(err.Error())
 	}
-	if err = memConn.Del("/tmp/b2b/test02"); err != nil {
+	if err = memConn.Del("/tmp/demo/test02"); err != nil {
 		t.Error(err.Error())
 	}
 }

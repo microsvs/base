@@ -35,30 +35,30 @@ func init() {
 func TestSetAndGetRedis(t *testing.T) {
 	var err error
 	defer redisConn.Close()
-	if err = redisConn.Set("/tmp/b2b/test01", "tmp"); err != nil {
+	if err = redisConn.Set("/tmp/demo/test01", "tmp"); err != nil {
 		t.Error(err.Error())
 	}
-	if err = redisConn.Set("/tmp/b2b/test02", "tmp"); err != nil {
+	if err = redisConn.Set("/tmp/demo/test02", "tmp"); err != nil {
 		t.Error(err.Error())
 	}
 	var value interface{}
 	var tmp string
-	if value, err = redisConn.Get("/tmp/b2b/test01"); err != nil {
+	if value, err = redisConn.Get("/tmp/demo/test01"); err != nil {
 		t.Error(err.Error())
 	}
 	if tmp, err = redis.String(value, err); err != nil {
 		t.Error(err.Error())
 	}
-	assert.Equal(t, "tmp", tmp, "`/tmp/b2b/test01` != tmp")
+	assert.Equal(t, "tmp", tmp, "`/tmp/demo/test01` != tmp")
 }
 
 func TestDelRedis(t *testing.T) {
 	var err error
 	defer redisConn.Close()
-	if err = redisConn.Del("/tmp/b2b/test01"); err != nil {
+	if err = redisConn.Del("/tmp/demo/test01"); err != nil {
 		t.Error(err.Error())
 	}
-	if err = redisConn.Del("/tmp/b2b/test02"); err != nil {
+	if err = redisConn.Del("/tmp/demo/test02"); err != nil {
 		t.Error(err.Error())
 	}
 }
