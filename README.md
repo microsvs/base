@@ -38,4 +38,24 @@ base是一个小而美的业务基础框架，它使用graphql作为api通信协
 
 ## 使用方式
 
-::TODO
+### 服务列表
+
+| 服务名 | 服务地址 | 用户名 | 密码 |
+|---|---|---|---|
+| zkui | [zkui](http://39.96.95.220:9090/login) | admin | manager |
+| gateway | [demo-dev](http://39.96.95.220:8081) | - | - |
+
+### 环境变量
+
+| 名称 | 值 | 描述 |
+|---|---|---|
+| APP_ZK | 39.96.95.220:2181| 配置中心地址 |
+| APP_NAME | demo | 产品名称 |
+| APP_LOG | log绝对路径 | 默认：/var/log/app |
+| APP_ENV | 部署环境 | （本地环境、开发、测试和生产） |
+| APP_VERSION | 产品版本 | 默认: v1.0|
+| APP_TRACER_AGENT | jaeger agent地址 | 默认值: 0.0.0.0:6831 |
+
+### 演示环境
+
+[demo](https://github.com/microsvs/demo)
