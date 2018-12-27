@@ -1,5 +1,9 @@
 base是一个小而美的业务基础框架，它使用graphql作为api通信协议基础。然后提供了一些可以直接使用的后端存储服务。
 
+| 开发文档 | 演示环境 |
+|---|---|
+|[开发手册](https://github.com/microsvs/doc)|[demo](https://github.com/microsvs/demo)|
+
 ![tiny-base](https://gewuwei.oss-cn-shanghai.aliyuncs.com/tracelearning/base.png)
 
 ## 基础特性
@@ -56,6 +60,4 @@ base是一个小而美的业务基础框架，它使用graphql作为api通信协
 | APP_VERSION | 产品版本 | 默认: v1.0|
 | APP_TRACER_AGENT | jaeger agent地址 | 默认值: 0.0.0.0:6831 |
 
-### 演示环境
 
-[demo](https://github.com/microsvs/demo)
