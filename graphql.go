@@ -2,6 +2,7 @@ package base
 
 import (
 	"fmt"
+	"reflect"
 	"strings"
 
 	"github.com/graphql-go/graphql"
@@ -20,13 +21,37 @@ func FixTypeFromGoToGraphql(v interface{}, argType graphql.Input) (result interf
 	var ret interface{}
 	switch val := argType.(type) {
 	case *graphql.List:
-		ret = buildSlice(v.([]interface{}), val.OfType)
+		var partialRes = []interface{}{}
+		value := reflect.ValueOf(v)
+		if value.Kind() != reflect.Slice {
+			break
+		}
+		for i := 0; i < value.Len(); i++ {
+			partialRes = append(partialRes, FixTypeFromGoToGraphql(value.Index(i).Interface(), val.OfType))
+		}
+		return partialRes
 	case *graphql.Scalar:
 		ret = val.Serialize(v)
 	case *graphql.Enum:
 		return val.Serialize(v)
 	case *graphql.NonNull:
 		return FixTypeFromGoToGraphql(v, val.OfType)
+	case *graphql.Object:
+		var imap = map[string]interface{}{}
+		value := reflect.ValueOf(v)
+		for value.Kind() == reflect.Ptr {
+			value = value.Elem()
+		}
+		types := value.Type()
+		fmap := val.Fields()
+		for i := 0; i < types.NumField(); i++ {
+			key := types.Field(i).Tag.Get("json")
+			if _, ok := fmap[key]; !ok {
+				continue
+			}
+			imap[key] = FixTypeFromGoToGraphql(value.Field(i).Interface(), fmap[key].Type)
+		}
+		ret = imap
 	}
 	if _, ok := v.(string); ok {
 		return fmt.Sprintf("\"%s\"", ret)
